@@ -25,16 +25,20 @@ def pendu():
 
         print(f"Vous avez {vies} vies et vous avez utilisez les lettres : {' '.join(lettres_utilisees)}")
 
-        liste_mot = [] # Le mot sous forme de liste. Si l'utilisateur a trouve une des lettres, la mettre sinon mettre "-"
+        liste_mot = [] # Le mot sous forme de liste. Si l'utilisateur a trouve une des lettres, la mettre dans la liste sinon mettre "-"
         print() # print le visuel du nombre de vie
         print('Mot actuel : ', ' '.join(liste_mot))
 
         nouvelle_lettre =  # demande une nouvelle lettre a l'utilisateur et la mettre en majuscule
-        if nouvelle_lettre in alphabet - lettres_utilisees: # si la nouvelle lettre est dans l'alphabet et pas dans celle deja utilisees
+        if : # si la nouvelle lettre est dans l'alphabet et pas dans celle deja utilisees
             # ajouter la nouvelle lettre dans celles utilisees (pour ajouter dans un set, utiliser : truc_set.add(qqc))
             # Faire une condition qui permet d'enlever la nouvelle lettre du set lettres_mot (si elle est dedans) ou qui enlève une vie et print que la lettre n'est pas dans le mot (sinon) 
             # (pour enlever qqc dans un set, utiliser : truc_set.remove(qqc))
+            if :
+                print('')
 
+            else:
+                print('\nVotre lettre,', nouvelle_lettre, ' n\'est pas dans le mot.')
 
         elif : # Si la nouvelle lettre est dans celles utilisees
             print('\nVous avez déjà utilisée cette lettre, choisissez-en une autre.')
