@@ -4,37 +4,37 @@ import random
 CANVAS_WIDTH = 600
 CANVAS_HEIGHT = 500
 
-# def dessine_carre():
-#     """Dessine un carré de largeur 50 pixels sur une position aléatoire du canvas
-#     qui est stocké dans la variable globale mon_canvas."""
-#     centre_x = # coordonnee x aleatoire du centre du carre
-#     centre_y = # coordonnee y aleatoire du centre du carre
-#     mon_canvas.create_rectangle((centre_x - 50, centre_y - 50),
-#                                 (centre_x + 50, centre_y + 50),
-#                                 fill="blue")
+def dessine_carre():
+    """Dessine un carré de largeur 50 pixels sur une position aléatoire du canvas
+    qui est stocké dans la variable globale mon_canvas."""
+    centre_x = # coordonnee x aleatoire du centre du carre
+    centre_y = # coordonnee y aleatoire du centre du carre
+    mon_canvas.create_rectangle((centre_x - 50, centre_y - 50),
+                                (centre_x + 50, centre_y + 50),
+                                fill="blue")
 
-# def dessine_disque():
-#     """Dessine un disque de rayon 50 pixels sur une position aléatoire du canvas
-#     qui est stocké dans la variable globale mon_canvas."""
-#     centre_x =   # coordonnee x aleatoire du centre du cercle 
-#     centre_y =   # coordonnee y aleatoire du centre du cercle
-#     mon_canvas.create_oval()  # completer la fonction. Elle prend en arguement les coordonnes des points haut gauche et bas droit du carre imaginaire qui contient le cercle (voir la fonction dessine_carre pour s'aider)
+def dessine_disque():
+    """Dessine un disque de rayon 50 pixels sur une position aléatoire du canvas
+    qui est stocké dans la variable globale mon_canvas."""
+    centre_x =   # coordonnee x aleatoire du centre du cercle 
+    centre_y =   # coordonnee y aleatoire du centre du cercle
+    mon_canvas.create_oval()  # completer la fonction. Elle prend en arguement les coordonnes des points haut gauche et bas droit du carre imaginaire qui contient le cercle (voir la fonction dessine_carre pour s'aider)
 
-# def dessine_croix():
-#     """Dessine une croix de largeur 50 pixels sur une position aléatoire du canvas
-#     qui est stocké dans la variable globale mon_canvas. La croix est constituée
-#     d'une ligne verticale et d'une autre horizontale."""
-#     centre_x = # coordonnee x aleatoire du centre de la croix
-#     centre_y = # coordonnee x aleatoire du centre de la croix
-#     mon_canvas.create_line() # completer la fonction. elle prend en argument les coordonnees des points aux extremites de la ligne
-#     mon_canvas.create_line() # completer la fonction. elle prend en argument les coordonnees des points aux extremites de la ligne
+def dessine_croix():
+    """Dessine une croix de largeur 50 pixels sur une position aléatoire du canvas
+    qui est stocké dans la variable globale mon_canvas. La croix est constituée
+    d'une ligne verticale et d'une autre horizontale."""
+    centre_x = # coordonnee x aleatoire du centre de la croix
+    centre_y = # coordonnee x aleatoire du centre de la croix
+    mon_canvas.create_line() # completer la fonction. elle prend en argument les coordonnees des points aux extremites de la ligne
+    mon_canvas.create_line() # completer la fonction. elle prend en argument les coordonnees des points aux extremites de la ligne
 
 
-# def change_couleur():
-#     """Modifie le contenu de la variable globale couleur par une valeur donnée
-#     par l'utilisateur."""
-#     global couleur # permet de modifier la variable couleur qui est definie en dehors de la fonction
-#     couleur = # demande à l'utilisateur une nouvelle couleur
+def change_couleur():
+    """Modifie le contenu de la variable globale couleur par une valeur donnée
+    par l'utilisateur."""
+    global couleur # permet de modifier la variable couleur qui est definie en dehors de la fonction
+    couleur = # demande à l'utilisateur une nouvelle couleur
 
 
 couleur = "blue" #couleur des dessins
