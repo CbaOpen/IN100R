@@ -2,23 +2,27 @@ import tkinter as tk
 
 
 # initialisation variables globales
-CANVAS_WIDTH = 600
-CANVAS_HEIGHT = 600
-nb_ligne = 50
-nb_colonne = 50
-largeur_case = CANVAS_WIDTH // nb_ligne
-hauteur_case = CANVAS_HEIGHT // nb_colonne
+CANVAS_WIDTH = 600     # largeur du canvas
+CANVAS_HEIGHT = 600    # hauteur du canvas
+nb_ligne = 50          # nombre de ligne pour la grille du jeu
+nb_colonne = 50        # nombre de colonne pour la grille du jeu
+largeur_case = CANVAS_WIDTH // nb_ligne      # largeur d'une cellule
+hauteur_case = CANVAS_HEIGHT // nb_colonne   # hauteur d'une cellule
 
-mort = "M"
-vivant = "V"
-iterations = 0
+mort = "M"      # etat mort d'une cellule 
+vivant = "V"    # etat vivant d'une cellule
+iterations = 0  # nombre d'itération de la simulation du jeu
 
-grille = []
-grille_canvas = []
+grille = []         # grille du jeu (tableau 2D contenant "M" ou "V" pour chaque cellule)
+grille_canvas = []  # grille du jeu montree sur le canvas (tableau 2D contenant les rectangles tkinter représentants les cellules)
 
-continuer_jeu = False
+continuer_jeu = False   # flag pour faire la simulation automatique ou non
+
 
 def init_grille():
+    """
+    initialisation de la grille, toutes les cellules ont l'etat mort
+    """
     grille = []
     for _ in range(0,nb_ligne):
         ligne = []
@@ -29,6 +33,9 @@ def init_grille():
     return grille
 
 def creer_grille_gui():
+    """
+    initialisation de la grille canvas
+    """
     global grille_canvas
     for i in range(nb_ligne):
         ligne_canvas = []
@@ -38,6 +45,9 @@ def creer_grille_gui():
         grille_canvas.append(ligne_canvas)
 
 def nouveau_jeu():
+    """
+    initialisation d'une simulation
+    """
     global grille, grille_canvas, iterations
 
     for ligne in grille_canvas:
@@ -54,6 +64,9 @@ def nouveau_jeu():
 
 
 def recup_ligne_col(x,y):
+    """
+    récupère la ligne et la colonne à partir d'un clique de souris
+    """
     ligne = -1
     col = -1
 
@@ -70,6 +83,9 @@ def recup_ligne_col(x,y):
     return ligne, col
 
 def maj_grille(ligne, col, statut):
+    """
+    met a jour la cellule de la grille canvas a partir de son statut mort ou vivant
+    """
     global grille_canvas
 
     if statut == mort:
@@ -78,6 +94,9 @@ def maj_grille(ligne, col, statut):
         canvas.itemconfig(grille_canvas[ligne][col],fill="orange")
 
 def change_couleur(event):
+    """
+    change la couleur de la cellule sur laquelle a clique le joueur
+    """
     global grille
 
     if "button" not in str(event.widget):
@@ -92,6 +111,9 @@ def change_couleur(event):
             maj_grille(ligne,col, grille[ligne][col])
     
 def compte_nb_voisins(ligne,col):
+    """
+    compte le nombre de voisins vivants d'une cellule
+    """
     nb_voisin_vivant = 0
 
     for k in range(-1,2):
@@ -103,7 +125,10 @@ def compte_nb_voisins(ligne,col):
 
     return nb_voisin_vivant   
 
-def jeu_vie_une_iteraction():
+def jeu_vie_une_iteration():
+    """
+    effectue une iteration du jeu sur toute la grille
+    """
     global grille, grille_canvas, iterations
 
     new_grille = [ligne_cop[:] for ligne_cop in grille] # copie de la grille
@@ -123,6 +148,9 @@ def jeu_vie_une_iteraction():
     Label_iterations.config(text = f"Nombre d'iterations : {iterations}")
 
 def jeu_vie_on_off():
+    """
+    active/desactive la simulation automatique lorsque le joueur clique sur le bouton lancer/stop
+    """
     global continuer_jeu
 
     if bouton_lancer_auto['text'] == "LANCER":
@@ -134,12 +162,12 @@ def jeu_vie_on_off():
         bouton_lancer_auto.config(text="LANCER")
 
 def jeu_vie():
+    """
+    fonction qui gere la simulation automatique
+    """
     if continuer_jeu:
-        jeu_vie_une_iteraction()
+        jeu_vie_une_iteration()
         racine.after(1,jeu_vie)
-    # while continuer_jeu:
-        # jeu_vie_une_iteraction()
-        # time.sleep(3)
 
 if __name__ == '__main__':
     """
@@ -156,7 +184,7 @@ if __name__ == '__main__':
     bouton_quitter = tk.Button(racine, text="QUITTER", font = ("helvetica", "20"), command=racine.destroy) # creation du bouton "quitter" et qui appel la fonction racine.destroy (permet de fermer la fenetre et quitter le jeu)
     
     bouton_lancer_auto = tk.Button(racine, text="LANCER",font = ("helvetica", "20"), command=jeu_vie_on_off)
-    bouton_lancer_une_it = tk.Button(racine, text="LANCER une\n iteration",font = ("helvetica", "20"), command=jeu_vie_une_iteraction)
+    bouton_lancer_une_it = tk.Button(racine, text="LANCER une\n iteration",font = ("helvetica", "20"), command=jeu_vie_une_iteration)
 
     racine.bind("<Button-1>", change_couleur)
 
